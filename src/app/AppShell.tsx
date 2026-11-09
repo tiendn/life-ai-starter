@@ -19,7 +19,7 @@ export function AppShell() {
     <div className="flex min-h-screen flex-col bg-app-bg text-app-text">
       <header className="sticky top-0 z-40 border-b border-app-border/80 bg-app-bg/[0.88] backdrop-blur-xl">
         <div className="mx-auto flex h-[76px] max-w-[1440px] items-center gap-7 px-5 md:px-10 lg:px-16">
-          <Link to="/" className="flex shrink-0 items-center gap-3" aria-label="Go to home">
+          <Link to="/" className="flex shrink-0 items-center gap-3" aria-label="LIFE AI FE Starter — Go to home">
             <BrandLogo />
             <span className="hidden border-l border-app-border pl-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-app-muted sm:block">
               FE Starter

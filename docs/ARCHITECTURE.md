@@ -8,7 +8,7 @@ src/
 │   ├── AppProviders.tsx # ThemeProvider and TanStack Query
 │   ├── AppShell.tsx     # responsive header / footer / outlet
 │   └── router.tsx       # centralized route definitions
-├── core/               # reserved for framework-agnostic domain adapters
+├── core/               # HTTP/session/query foundations and domain adapters
 ├── features/           # reserved for new isolated capabilities
 ├── pages/              # route composition only
 ├── shared/
@@ -27,7 +27,7 @@ src/
 - `features/<feature-name>` owns its hooks, types, API adapters and UI.
 - `features` may import `core`, `shared`, and `theme`; they should not import unrelated features.
 - `shared` never imports from `features` or `pages`, and remains business-agnostic.
-- `core` houses external service adapters and domain types. This starter intentionally ships no service adapters.
+- `core` houses external service adapters and domain types. The reusable HTTP client, session provider and query/mutation hooks live in `src/core/api/`; feature adapters bind a verified backend contract. See [API and server state](API.md).
 - Prefer semantic Tailwind tokens (`bg-app-surface`, `text-app-action`) over hard-coded colors.
 - Use `AppProviders` for app-wide context; don't introduce global state without a cross-cutting requirement.
 - Keep API/network calls out of presentational components. Data fetching may use TanStack Query when needed.
@@ -47,3 +47,12 @@ All vesting/grant flows, blockchain contracts and ABIs, chain configuration,
 Wagmi/RainbowKit/viem, wallet UI, transaction state, repository mocks,
 network badges, testnet/mainnet environments and product-specific documentation.
 The original repository's `.git`, builds, and environment files are not included.
+
+
+## State ownership
+
+Server responses belong in TanStack Query. Forms and temporary component state
+belong in React; shareable filters belong in router search parameters. Add a
+store such as Zustand for a demonstrated cross-route client-state need, not to
+mirror query responses. API caches are isolated by service and authentication
+revision; see [session configuration](API.md#configure-the-service-and-authentication-boundary).

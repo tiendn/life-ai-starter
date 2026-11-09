@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import type { PropsWithChildren } from 'react'
 import { ThemeProvider } from '../theme/useTheme'
+import { ApiProvider, type ApiSession } from '../core/api/ApiProvider'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -12,10 +13,13 @@ const queryClient = new QueryClient({
   },
 })
 
-export function AppProviders({ children }: PropsWithChildren) {
+export function AppProviders({ children, apiSession }: PropsWithChildren<{ apiSession?: ApiSession }>) {
+  const queryState = apiSession
+    ? <ApiProvider session={apiSession}>{children}</ApiProvider>
+    : <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
   return (
     <ThemeProvider>
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      {queryState}
     </ThemeProvider>
   )
 }

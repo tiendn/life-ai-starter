@@ -7,13 +7,13 @@ description: Connect a real backend endpoint, implement a typed frontend API ada
 
 ## Preparation
 
-Read `src/app/AppProviders.tsx`, `src/test/mocks/`, [Architecture](../../../docs/ARCHITECTURE.md) and [Testing](../../../docs/TESTING.md). Require a verified API contract (docs/schema/example from owner). If unavailable, implement an explicitly isolated interface without pretending the backend exists.
+Read [API and server state](../../../docs/API.md), `src/core/api/`, `src/app/AppProviders.tsx`, `src/test/mocks/`, [Architecture](../../../docs/ARCHITECTURE.md) and [Testing](../../../docs/TESTING.md). Require a verified API contract (docs/schema/example from owner). If unavailable, implement an explicitly isolated interface without pretending the backend exists.
 
 ## Data flow
 
 `route/page → feature hook → typed API adapter (core/ or feature-local) → HTTP boundary`.
 
-1. Define DTOs separately from presentation models when transformations are meaningful. Validate untrusted payloads at the boundary when correctness or safety requires it; add a validator library only with justification.
+1. Reuse the existing HTTP/session/query foundation; do not rebuild a second client or duplicate server responses in a client store. Generate DTOs from the verified OpenAPI contract when available. Define DTOs separately from presentation models when transformations are meaningful. Validate untrusted payloads at the boundary when correctness or safety requires it; add a validator library only with justification.
 2. Keep request base URL/config in one location; `VITE_*` values are **public** and cannot store secrets. Handle non-2xx responses and cancellation (`AbortSignal`). Never log auth tokens or personal data.
 3. Use TanStack Query for server state; choose stable query keys that contain all variables influencing the query. Distinguish `isPending`, fetching/refetching, empty results and errors.
 4. Mutations should show appropriate pending/error/success feedback, disable duplicate submissions where needed, and invalidate only related query keys after success. Avoid optimistic updates unless rollback behavior is defined.

@@ -34,7 +34,7 @@ mock handlers within its own folder and share them with `src/test/mocks/handlers
 ## Coverage
 
 The initial thresholds enforced against **shared components, shared utilities and
-the theme provider** are:
+the theme provider and API foundation** are:
 
 - Statements 75%; branches 65%; functions 75%; lines 75%.
 
@@ -98,3 +98,10 @@ are not enforced in CI. This is an explicit remaining setup step, not a passed t
 (including structural accessibility) on push to main and every pull request.
 Visual snapshots run if snapshot PNGs have been committed. Installs use `pnpm-lock.yaml` with
 `pnpm install --frozen-lockfile`; update the lockfile with `pnpm install` when changing dependencies.
+
+
+The API foundation's MSW suites cover transport and React Query/session behavior;
+[the API case matrix](API.md#verification-boundaries) separates these checks from
+application browser/auth/backend acceptance. `scripts/generate-api.test.ts` runs
+the generator in a real Node subprocess against temporary synthetic contracts;
+no production endpoint/schema is bundled.

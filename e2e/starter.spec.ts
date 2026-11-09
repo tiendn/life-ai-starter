@@ -2,6 +2,7 @@ import { expect, test } from '@playwright/test'
 
 test('starter navigation and theme switching', async ({ page }) => {
   await page.goto('/')
+  await expect(page.getByRole('link', { name: 'LifeAI FE Starter — Go to home' })).toBeVisible()
   await expect(page.getByRole('heading', { name: 'A clean canvas for what comes next.' })).toBeVisible()
   await page.getByRole('button', { name: 'Use dark theme' }).click()
   await expect(page.locator('html')).toHaveClass(/dark/)

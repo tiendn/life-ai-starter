@@ -37,13 +37,13 @@ React 18 · TypeScript · Vite 5 · TanStack Router · TanStack Query · Tailwin
 ```text
 src/
   app/           AppProviders, AppShell, router
-  core/          empty: new integrations/adapters belong here
+  core/          reusable HTTP client, API/session provider and query/mutation hooks
   features/      empty: new features belong here
   pages/         HomePage, UIKitPage, NotFoundPage
   shared/        business-agnostic UI components, motion, utils
   test/          Vitest setup and example MSW mocks
   theme/         source tokens, generated CSS, light/dark provider
-scripts/         theme generator
+scripts/         theme and OpenAPI type generators
 e2e/             interaction, accessibility and visual regression tests
 docs/            architecture, design system, development, testing, agent skills
 .agents/skills/  task-specific SKILL.md workflows for Codex and Cursor
@@ -82,3 +82,13 @@ needs a separate accessibility review.
 See [ARCHITECTURE](docs/ARCHITECTURE.md), [DESIGN_SYSTEM](docs/DESIGN_SYSTEM.md),
 [DEVELOPMENT](docs/DEVELOPMENT.md), [TESTING](docs/TESTING.md) and
 [UX_MOTION](docs/UX_MOTION.md) and [SKILLS](docs/SKILLS.md).
+
+
+## API foundation
+
+[API and server state](docs/API.md) covers the HTTP client, session-scoped React
+Query hooks, safe mutations and offline OpenAPI generation. Configure an API
+session only when integrating a real service; the starter sends no API requests
+by default. Feature adapters own endpoint paths and backend-specific workflows.
+Server data stays in TanStack Query. Use React state and URL search parameters for
+local/shareable UI state; add Zustand when a concrete shared client-state need exists.

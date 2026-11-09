@@ -34,3 +34,9 @@ when replacing the starter landing with a product.
 Do not put secrets into `VITE_*`: these values are exposed to the browser.
 
 Agent workflows and example prompts: [SKILLS.md](SKILLS.md). `AGENTS.md` remains the always-on repository instruction contract.
+
+
+For backend integration, start with [API and server state](API.md). Configure the
+session through `AppProviders`, bind typed feature adapters, and add the consuming
+project's OpenAPI input/output paths to its generation and CI commands. Never use
+`VITE_*` to store authentication tokens or credentials.

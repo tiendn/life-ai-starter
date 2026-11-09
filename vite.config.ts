@@ -16,10 +16,12 @@ export default defineConfig({
         'src/shared/components/**/*.{ts,tsx}',
         'src/shared/utils/**/*.{ts,tsx}',
         'src/theme/useTheme.tsx',
+        'src/core/api/**/*.{ts,tsx}',
       ],
       exclude: [
         '**/*.test.{ts,tsx}',
         '**/*.spec.{ts,tsx}',
+        '**/*.d.ts',
         '**/index.ts',
       ],
       thresholds: {

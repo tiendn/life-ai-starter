@@ -49,6 +49,10 @@ Dependency direction:
 - `shared` must not import from `features` or `pages`.
 - Keep HTTP/network operations behind adapters/hooks, not inside presentational JSX.
 - Use TanStack Query for server state where appropriate; do not add global state by default.
+- For state shared by sibling pages, mount its feature provider at their nearest common route layout around the shared shell and outlet. Keep public routes outside authenticated providers so they do not start private queries.
+- Feature controllers/hooks compose query data into typed models; views receive props and emit user-intent callbacks. Keep local interaction state local and avoid copying query results into Context or another store.
+
+See [Layout, providers and state ownership](docs/ARCHITECTURE.md#layout-providers-and-state-ownership) for provider scope, lifecycle and state ownership.
 
 Component boundaries follow [Architecture: Component composition](docs/ARCHITECTURE.md#component-composition). Plan meaningful feature blocks before detailed page markup and review composition before delivery; do not require Atomic Design folders or wrappers for every HTML element.
 
@@ -82,6 +86,7 @@ For every meaningful change:
 2. Use React Testing Library to exercise visible output and user interactions.
 3. Mock API boundaries with MSW from `src/test/mocks/`, not with hidden live network dependencies.
 4. Add or update Playwright browser tests for changed navigation, forms or user-critical flows.
+   When introducing a layout-scoped provider, verify shared consumers, child-route navigation, cleanup on leaving its scope, and session/cache isolation. Public routes must not trigger private queries.
 5. Cover keyboard accessibility; for accessibility-sensitive UI extend `e2e/accessibility.spec.ts` where useful.
 6. If a visible UI/layout change affects screenshot baselines, regenerate with `pnpm run test:visual:update` **only after reviewing the visual diff**, then commit the reviewed PNGs. Never automatically approve visual changes just to turn CI green.
 7. Maintain existing V8 coverage thresholds; do not lower them as a workaround.

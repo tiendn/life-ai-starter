@@ -39,8 +39,10 @@ if (collisions.length) {
 for (const filename of entries.keys()) {
   console.log(`${input.includes('--dry-run') ? 'Would create' : 'Created'}: ${path.relative(repo, filename)}`)
 }
+console.log('Next: implement the feature hook/controller for data and keep the generated section presentational.')
+console.log('Register the page under the intended route layout; put shared providers at the nearest common layout only when multiple routes need them.')
+console.log('Keep API data in TanStack Query. Use local state for interaction and avoid adding a store or provider solely to mirror query results.')
 if (!input.includes('--dry-run')) {
   await mkdir(featureDir, { recursive: true })
   for (const [filename, contents] of entries) await writeFile(filename, contents, { flag: 'wx' })
-  console.log('Next: implement real behavior and register the page in src/app/router.tsx.')
 }

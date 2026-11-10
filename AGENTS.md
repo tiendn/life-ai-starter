@@ -1,12 +1,12 @@
 # Agent Instructions — LifeAI FE Starter
 
-This file is the **repository-wide instruction contract** for coding agents (Codex, Claude Code, Cursor, and other AI assistants). Read it before modifying code. The repository is a reusable frontend foundation, **not** a Vesting application.
+This file is the **repository-wide instruction contract** for coding agents (Codex, Claude Code, Cursor, and other AI assistants). Read it before modifying code. The starter provides a reusable frontend foundation; product behavior comes from the consuming project’s confirmed requirements.
 
 ## 1. Mission and boundaries
 
 - Build new frontend functionality on the existing React/TypeScript/Vite architecture.
 - **Preserve the LifeAI visual system** (light/dark themes, typography, spacing, semantic colors, radii, shadows, motion and accessible interactions) unless a task explicitly asks for a redesign.
-- Keep the starter free of Vesting/Grants, wallet connections, blockchain, ABI, contract, chain, transaction or other old product logic. Do not restore deleted code simply because a file in the old project once used it.
+- Implement domain features and integrations only when required by the current product scope. Keep shared primitives independent of product-specific behavior.
 - Do not invent backend contracts, API endpoints, user data or production credentials. Prefer typed interfaces and isolated adapters if integration details are unknown.
 - Make focused changes. Do not refactor unrelated code, change tooling, or add dependencies without a concrete reason.
 
@@ -116,7 +116,7 @@ pnpm run test:visual # once reviewed baselines are committed
 ## 9. Agent completion checklist
 
 - [ ] Applied the relevant task-specific skill(s) rather than blindly loading all of them.
-- [ ] No legacy Vesting or blockchain domain code reintroduced.
+- [ ] Feature and integration scope matches the current product requirements.
 - [ ] Correct dependency boundaries and no unapproved architectural drift.
 - [ ] Light/dark, mobile and keyboard behavior considered.
 - [ ] Theme tokens sourced from `_config.ts` and generated as needed.
@@ -128,4 +128,4 @@ pnpm run test:visual # once reviewed baselines are committed
 
 ## 10. Do not claim checks passed without running them
 
-This starter was initially assembled in an environment without npm registry access. A syntax/import review is **not equivalent** to successful lint, typecheck, test, or build. If you cannot install dependencies or execute a command, report the limitation accurately and give the exact commands the developer should run locally.
+A syntax/import review is **not equivalent** to successful lint, typecheck, test, or build. If you cannot install dependencies or execute a command, report the limitation accurately and give the exact commands the developer should run locally.

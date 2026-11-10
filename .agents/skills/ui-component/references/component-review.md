@@ -12,3 +12,5 @@ Review only the checks relevant to the primitive; don't blindly copy all props i
 - Touch target size, long content, 320px viewport and 200% browser zoom considered.
 - Dialog/popover: focus trapping, Escape, return focus and screen-reader role are explicitly verified.
 - Real tests cover observable behavior, including keyboard interactions; UI kit updated only when useful.
+- Extraction owns a meaningful responsibility or design-system contract; shared placement has concrete justification.
+- Repeated state UI is consolidated where behavior matches; simple semantic HTML and unrelated states are not forced into generic wrappers.

@@ -53,6 +53,8 @@ Dependency direction:
 - Keep HTTP/network operations behind adapters/hooks, not inside presentational JSX.
 - Use TanStack Query for server state where appropriate; do not add global state by default.
 
+Component boundaries follow [Architecture: Component composition](docs/ARCHITECTURE.md#component-composition). Plan meaningful feature blocks before detailed page markup and review composition before delivery; do not require Atomic Design folders or wrappers for every HTML element.
+
 ## 5. UI, UX and accessibility rules
 
 - Use semantic design tokens such as `bg-app-surface`, `text-app-text`, `text-app-action` rather than new literal hex values in application code.

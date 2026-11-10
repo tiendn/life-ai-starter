@@ -11,6 +11,8 @@ description: Create, extend or refactor a reusable React UI component in the Lif
 
 Read [Design System](../../../docs/DESIGN_SYSTEM.md), [UX & Motion](../../../docs/UX_MOTION.md), and inspect `src/shared/components/` plus `/ui-kit`. Reuse existing components first. If the view encodes business meaning, keep it under its feature instead of `shared`.
 
+Apply the [component boundary criteria](../../../docs/ARCHITECTURE.md#component-composition) before extraction. A component needs a responsibility or design-system contract; wrapping a native tag alone is not a reason to create one.
+
 ## Implementation recipe
 
 1. Specify **one job** and a small public API. Prefer native HTML semantics and `ComponentPropsWithoutRef<'button'>` / appropriate native element props where useful.

@@ -28,8 +28,16 @@ Use this worksheet when a feature spans multiple files or a new route. Fill only
 - `src/core/`: reusable integration adapter when real endpoint is known
 - `src/shared/`: reusable primitives only when justified
 
+## Component boundaries
+
+- Existing primitives to reuse:
+- Feature blocks and the responsibility of each:
+- Route orchestration and simple markup kept in the page:
+- New shared component, if any: concrete reuse or design-system contract:
+
 ## Sign-off
 
+- [ ] Composition reviewed against Architecture; repeated state UI and unnecessary wrappers considered
 - [ ] Small-screen & desktop behavior verified
 - [ ] Light & dark checked
 - [ ] Keyboard/focus and meaningful labels verified

@@ -10,7 +10,7 @@ Read [Design System](../../../docs/DESIGN_SYSTEM.md), [UX & Motion](../../../doc
 ## Sequence
 
 1. Identify the user's top question and **one primary action**. Decide which information must be visible above the fold. Avoid presenting equal-weight cards for every item.
-2. Sketch the content hierarchy in plain text: heading → key outcome/action → supporting sections → optional details. Resist redundant UI copy and decorative data.
+2. Sketch the content hierarchy in plain text: heading → key outcome/action → supporting sections → optional details. Resist redundant UI copy and decorative data. Before detailed JSX, map meaningful feature blocks and existing primitives using [component composition](../../../docs/ARCHITECTURE.md#component-composition). Keep the page focused on route orchestration and layout rather than detailed feature interactions.
 3. Build mobile-first. Page gutters are approximately 20px mobile, 40px tablet, 64px desktop; content max about 1440px. Start with one column and progressively enhance. Test 320px/375px widths and 1280px+.
 4. Compose with reusable `Surface`, `SectionLabel`, `Button`, `Badge`, `EmptyState`, `MotionPage`; use semantic tokens, typography roles and the existing rounded shapes. Prefer CSS layout over absolute positioning for core content.
 5. Include real loading, empty, error, success and partial-data states where needed. Don't fabricate product numbers or production API responses. Keep data integrations isolated behind feature hooks.

@@ -21,15 +21,12 @@ This file is the **repository-wide instruction contract** for coding agents (Cod
 
 When implementing a feature, inspect neighboring code and tests before editing; follow established conventions rather than inventing new patterns.
 
-## 3. Task-specific Agent Skills
+## 3. Guidance ownership
 
-For tasks matching a skill, read its `SKILL.md` under `.agents/skills/<name>/` and follow its steps **in addition to** this repository-wide contract. For available skills and invocation examples, see [`docs/SKILLS.md`](docs/SKILLS.md).
-
-- Feature work: `feature-delivery` (optionally `routing-navigation`, `api-server-state`).
-- Shared components, theme and UX: `ui-component`, `design-tokens`, `page-ux`.
-- Verification and improvements: `testing-quality`, `accessibility-audit`, `frontend-performance`, `bugfix-review`.
-
-Do **not** load every skill for every task. The skill `description` determines when a focused workflow is appropriate. The canonical files are under `.agents/skills`; Claude Code may use the local generated copy created by `pnpm run skills:sync:claude`. Update the canonical copy only.
+Keep repository conventions in this file and implementation details in the linked
+architecture, API, design and testing documents. Read the documents relevant to the
+task and inspect current code before editing. Reusable agent skills should describe
+methods rather than duplicate this repository's component names or business logic.
 
 ## 4. Architecture and ownership
 
@@ -92,7 +89,6 @@ For every meaningful change:
 Quality commands (run applicable ones before delivery):
 
 ```bash
-pnpm run skills:check
 pnpm run lint
 pnpm run typecheck
 pnpm run test:coverage
@@ -116,7 +112,7 @@ pnpm run test:visual # once reviewed baselines are committed
 
 ## 9. Agent completion checklist
 
-- [ ] Applied the relevant task-specific skill(s) rather than blindly loading all of them.
+- [ ] Read the relevant repository guidance and inspected current code.
 - [ ] Feature and integration scope matches the current product requirements.
 - [ ] Correct dependency boundaries and no unapproved architectural drift.
 - [ ] Light/dark, mobile and keyboard behavior considered.

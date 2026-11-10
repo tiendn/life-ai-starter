@@ -14,7 +14,7 @@ description: Build a new user-facing frontend feature end to end in LifeAI FE St
 ## Workflow
 
 1. **Translate the request into outcomes.** Write a brief acceptance checklist: entry point; user action; loading/empty/error/success states; responsive and accessibility expectations. Do not invent a backend contract.
-2. **Map ownership.** Feature logic, hooks, types and feature UI belong in `src/features/<kebab-name>/`. Put only route-level composition in `src/pages/`; global wiring goes to `src/app/`. General-purpose components belong in `src/shared/` only after proving reuse.
+2. **Map ownership.** Feature logic, hooks, types and feature UI belong in `src/features/<kebab-name>/`. Put only route-level composition in `src/pages/`; global wiring goes to `src/app/`. General-purpose components belong in `src/shared/` only after proving reuse. Sketch the page → feature block → shared primitive composition using [component boundary criteria](../../../docs/ARCHITECTURE.md#component-composition); identify which orchestration stays in the page.
 3. **Design minimal contracts.** Define explicit TypeScript props and data types; prefer small pure selectors/transforms. Keep network boundaries in typed adapters and [TanStack Query](../api-server-state/SKILL.md) rather than JSX.
 4. **Implement UI with existing tokens and components.** Reuse `Surface`, `Button`, `Input`, `EmptyState`, `MotionPage`; use semantic Tailwind classes. Check light/dark, 320–390px mobile widths and desktop.
 5. **Wire page and route.** Add a page in `src/pages/`, use code-based `createRoute` in `src/app/router.tsx`, and add navigation in `AppShell.tsx` only when discoverability warrants it. Preserve the typed router registration.

@@ -23,7 +23,7 @@ Prioritize findings by **severity and proof**:
 
 1. Correctness and user-visible regressions, including state races, empty/error paths and data mismatches.
 2. Security/privacy: leaked secrets, untrusted URL/data use, auth assumptions, API boundary mistakes.
-3. Architecture: forbidden feature-to-feature imports, global state proliferation, duplicated primitives.
+3. Architecture: forbidden feature-to-feature imports, global state proliferation, duplicated primitives. Apply [composition review checks](../../../docs/ARCHITECTURE.md#component-composition) to page responsibilities, repeated state UI, component APIs and unjustified shared abstractions.
 4. A11y/UX: inaccessible controls, focus loss, motion problems, theme regressions.
 5. Tests, lint, type safety and performance risks supported by evidence.
 

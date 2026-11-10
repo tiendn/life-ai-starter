@@ -58,3 +58,9 @@ and Tailwind `dark` class. Default is light. All components must be valid in bot
 - Motion respects `prefers-reduced-motion`.
 - Dialog is dismissible with Escape; for production-grade complex dialogs, add focus trapping and return-focus management or use a vetted accessible dialog primitive.
 - Verify keyboard and screen-reader behavior when introducing new components.
+
+## System feedback
+
+See [System feedback](FEEDBACK.md) for the planned Sonner-based toast foundation,
+shared banner/inline contracts, styling and acceptance criteria. These components
+are not part of the existing inventory until implemented and verified in UI Kit.

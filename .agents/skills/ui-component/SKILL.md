@@ -34,3 +34,9 @@ Apply the [component boundary criteria](../../../docs/ARCHITECTURE.md#component-
 ## Deliverable
 
 A focused component API, real behavior tests, and (when warranted) a UI-kit example. Do not install a new component library without a demonstrated need.
+
+## Feedback components
+
+For toast, banner or inline feedback work, read [System feedback](../../../docs/FEEDBACK.md).
+Check implementation status before using the planned API. Preserve the one-host
+boundary, typed adapter, stable event IDs and real-browser accessibility checks.

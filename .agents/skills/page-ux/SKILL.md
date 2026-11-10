@@ -29,3 +29,10 @@ Read [Design System](../../../docs/DESIGN_SYSTEM.md), [UX & Motion](../../../doc
 ## Output
 
 Implemented page, short UX rationale, responsive/keyboard checks, and visual diff status.
+
+## Feedback decisions
+
+When a page needs notifications or operation feedback, apply
+[System feedback](../../../docs/FEEDBACK.md): choose inline, toast or banner by
+purpose and lifetime. Let the feature determine confirmed versus unknown outcomes
+and safe recovery. Do not turn polling errors into repeated toasts.

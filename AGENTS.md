@@ -62,6 +62,7 @@ Component boundaries follow [Architecture: Component composition](docs/ARCHITECT
 - Reuse `Button`, `Dialog`, `Input`, `Surface`, `Badge`, `EmptyState` and other existing shared components before creating new primitives.
 - Support both light and dark modes; avoid styling that works only in one mode.
 - Follow mobile-first/responsive layouts, appropriate focus order, visible focus states, keyboard interactions, meaningful labels, and native semantics.
+- For toast, banner and inline feedback work, read [System feedback](docs/FEEDBACK.md) before implementation. It defines the planned foundation; verify source availability before calling its API.
 - Respect `prefers-reduced-motion`. Keep animation purposeful and short; do not introduce perpetual animation without user value.
 - Keep user-facing copy compact and clear. Never create fabricated loading, success, financial, or backend data merely to make a screen look populated.
 - Note: preserving the original palette does **not** guarantee WCAG contrast compliance. Flag and verify contrast-sensitive changes rather than silently altering the brand palette.

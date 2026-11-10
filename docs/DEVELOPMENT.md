@@ -5,7 +5,6 @@ Requires Node.js 22 LTS and pnpm 12.4.1 (pinned in `package.json`).
 ```bash
 pnpm install --frozen-lockfile
 pnpm run dev
-pnpm run skills:check # optional: when maintaining .agents/skills/
 pnpm run theme:generate
 pnpm run lint
 pnpm run lint:fix
@@ -33,4 +32,9 @@ when replacing the starter landing with a product.
 
 Do not put secrets into `VITE_*`: these values are exposed to the browser.
 
-Agent workflows and example prompts: [SKILLS.md](SKILLS.md). `AGENTS.md` remains the always-on repository instruction contract.
+[`../AGENTS.md`](../AGENTS.md) defines repository conventions for coding agents.
+
+To preview a feature scaffold, run `pnpm run feature:scaffold account --dry-run`.
+Omit `--dry-run` to create the component, test and page. Existing files are never
+overwritten. Register the page under its public or authenticated route layout and
+replace placeholder markup with the required behavior.

@@ -33,6 +33,29 @@ src/
 - Keep API/network calls out of presentational components. Data fetching may use TanStack Query when needed.
 - Respect reduced motion and keyboard accessibility.
 
+## Layout, providers and state ownership
+
+Use the nearest route layout that contains every consumer as the boundary for
+shared feature context. When several authenticated pages need the same operational
+context, put its provider in the authenticated layout around that layout's shared
+shell and route outlet. Keep public routes outside it so they do not start private
+queries. A single-page concern stays in the page or feature that owns it.
+
+Separate three responsibilities:
+
+- A feature controller/hook composes auth identity, TanStack Query results and
+  feature selectors into a typed model with independent source loading/error/freshness.
+- A provider exposes that model to the subtree that needs it; it does not own a
+  second copy of API data.
+- Presentational components accept the model as props, render it and report user
+  intent through callbacks. They do not fetch or authorize requests.
+
+Keep server state in TanStack Query. Use React state for local interaction and
+React Context for a value shared through a known subtree. Add an external client
+state store only when independently changing client state has multiple consumers
+or lifecycle needs that the existing query cache, local state and scoped context
+do not cover. Do not mirror query results into Context or another store.
+
 ## Component composition
 
 Use component boundaries to express responsibilities, behavior and design-system

@@ -7,7 +7,6 @@ is an example endpoint only; no external API, wallet or smart contract is requir
 
 | Command | Purpose |
 | --- | --- |
-| `pnpm run skills:check` | Validate skill metadata and relative links without node_modules |
 | `pnpm run lint` | ESLint 9 flat config, TypeScript, hooks and JSX accessibility rules; zero-warning gate |
 | `pnpm run lint:fix` | Apply ESLint's safe automatic fixes |
 | `pnpm run typecheck` | TypeScript (strict) |

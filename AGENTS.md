@@ -85,10 +85,10 @@ For every meaningful change:
 1. Add or update Vitest tests near changed hooks, utilities and components; test behavior rather than implementation details.
 2. Use React Testing Library to exercise visible output and user interactions.
 3. Mock API boundaries with MSW from `src/test/mocks/`, not with hidden live network dependencies.
-4. Add or update Playwright browser tests for changed navigation, forms or user-critical flows.
-   When introducing a layout-scoped provider, verify shared consumers, child-route navigation, cleanup on leaving its scope, and session/cache isolation. Public routes must not trigger private queries.
-5. Cover keyboard accessibility; for accessibility-sensitive UI extend `e2e/accessibility.spec.ts` where useful.
-6. If a visible UI/layout change affects screenshot baselines, regenerate with `pnpm run test:visual:update` **only after reviewing the visual diff**, then commit the reviewed PNGs. Never automatically approve visual changes just to turn CI green.
+4. **Do not write E2E by default.** Add Playwright tests only for qualifying, high-risk, cross-layer user journeys under [`docs/TESTING.md`](docs/TESTING.md#when-to-write-e2e). A changed route, form, UI component, or new feature does not by itself require E2E. Prefer the cheapest reliable unit/component/integration test.
+   Auth/session lifecycle (login, browser reload, token refresh, logout), authorization boundaries, and irreversible business actions are candidates when implemented. For layout-scoped providers, first test sharing/cleanup/isolation below the browser; add E2E only when a genuine browser/navigation boundary is the remaining risk. Public routes must not trigger private queries.
+5. Cover keyboard accessibility in component tests; extend `e2e/accessibility.spec.ts` for representative cross-component focus/keyboard behavior when that browser check adds value.
+6. If an existing, intentionally maintained visual-regression baseline changes, regenerate with `pnpm run test:visual:update` **only after reviewing the visual diff**, then commit the reviewed PNGs. Routine UI changes do not require new screenshot tests; never auto-approve visual changes just to turn CI green.
 7. Maintain existing V8 coverage thresholds; do not lower them as a workaround.
 
 Quality commands (run applicable ones before delivery):
